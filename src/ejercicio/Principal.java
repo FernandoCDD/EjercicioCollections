@@ -25,16 +25,14 @@ public class Principal {
 		 */
 
 		// 1. Agregar alumnos con addAll.
-		// 2. Encontrar índice del alumno con BinarySearch
-		// 3. Buscar el número de clsae mayor con MAX.
-		// 4. Reemplazar un alumno por otro con ReplaceAll
-		// 5. Invertir el orden de la lista con Reverse.
+		// 2. Buscar el alumno con el apellido más lejano alfabéticamente y 
+		//		el alumno con el nombre más cercano.
+		// 3. Reemplazar un alumno antiguo por uno nuevo.
+		// 4. Invertir la lista.
+		// 5. Intercambiar la posición de un alumno por otro
 		// 6. Barajar la lista con Shuffle.
-		// 7. Intercambiar la posición de dos alumnos con Swap.
-		// 8. Crear una lista vacía con un método, donde guardes personas que se llamen
-		// Alejandro. Método Empty.
-		// 9. Imprimir el número de veces que se repite el nombre de Carlos.
-		// 10. Ordenar la lista por orden natural con Sort.
+		// 7. Ordenar la lista por nombre
+		// 8. Ordenar la lista por apellido.
 
 		Alumno a1 = new Alumno("Pilar", "Aguilar");
 		Alumno a2 = new Alumno("Pablo", "Cámara");
@@ -84,13 +82,13 @@ public class Principal {
 			System.out.println("¿Qué quieres hacer?");
 			System.out.println("1. Agregar Alumnos.");
 			System.out.println("2. Buscar el alumno con el apellido más lejano alfabéticamente,\n"
-							+ "y el alumno con el nombre más cercano alfabéticamente. OK");
-			System.out.println("3. Reemplazar un alumno antiguo por uno nuevo. OK");
-			System.out.println("4. Invertir la lista. OK");
+							+ "y el alumno con el nombre más cercano alfabéticamente.");
+			System.out.println("3. Reemplazar un alumno antiguo por uno nuevo.");
+			System.out.println("4. Invertir la lista.");
 			System.out.println("5. Intercambiar la posición de un alumno por otro.");
 			System.out.println("6. Desordenar la lista.");
-			System.out.println("7. Ordenar la lista por nombre (No natural) OK");
-			System.out.println("8. Ordenar la lista por apellido (Natural) OK");
+			System.out.println("7. Ordenar la lista por nombre (No natural)");
+			System.out.println("8. Ordenar la lista por apellido (Natural)");
 			System.out.println("0. Salir");
 			opcion = Leer.datoInt();
 
