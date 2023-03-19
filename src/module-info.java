@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author ferna
+ *
+ */
+module EjercicioCollections {
+}
