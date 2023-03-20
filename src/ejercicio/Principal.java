@@ -2,7 +2,6 @@ package ejercicio;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import utilidades.Leer;
@@ -10,7 +9,6 @@ import utilidades.Leer;
 public class Principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		int opcion = 0, cero = 0, indice = 0, indiceNuevoAlumno = 0;
 
@@ -25,8 +23,8 @@ public class Principal {
 		 */
 
 		// 1. Agregar alumnos con addAll.
-		// 2. Buscar el alumno con el apellido más lejano alfabéticamente y 
-		//		el alumno con el nombre más cercano.
+		// 2. Buscar el alumno con el apellido más lejano alfabéticamente y
+		// el alumno con el nombre más cercano.
 		// 3. Reemplazar un alumno antiguo por uno nuevo.
 		// 4. Invertir la lista.
 		// 5. Intercambiar la posición de un alumno por otro
@@ -68,13 +66,11 @@ public class Principal {
 
 		Collections.addAll(alumnos, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18,
 				a19, a20, a21, a22, a23, a24, a25, a26, a27, a28);
-
-		GestionAlumno ga = new GestionAlumno(alumnos);
+		
+		GestionAlumno ga = new GestionAlumno (alumnos);
 
 		System.out.println("Buenos días, esta es la lista de 1º DAM\n");
-		for (int i = 0; i < alumnos.size(); i++) {
-			System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-		}
+		ga.imprimirLista();
 
 		System.out.println();
 		do {
@@ -82,7 +78,7 @@ public class Principal {
 			System.out.println("¿Qué quieres hacer?");
 			System.out.println("1. Agregar Alumnos.");
 			System.out.println("2. Buscar el alumno con el apellido más lejano alfabéticamente,\n"
-							+ "y el alumno con el nombre más cercano alfabéticamente.");
+					+ "y el alumno con el nombre más cercano alfabéticamente.");
 			System.out.println("3. Reemplazar un alumno antiguo por uno nuevo.");
 			System.out.println("4. Invertir la lista.");
 			System.out.println("5. Intercambiar la posición de un alumno por otro.");
@@ -107,17 +103,14 @@ public class Principal {
 				Alumno a = new Alumno(nombre, apellido);
 
 				Collections.addAll(alumnos, a);
-				System.out.println();
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.imprimirLista();
 				break;
 
 			case 2:
 
-				System.out.println("Apellido más lejano: " + Collections.max(alumnos));
-				System.out.println("Nombre más cercano: " + Collections.min(alumnos, new OrdenarPorNombre()));
+				// Si no especificas el orden, te saca el mayor o menor del orden natural.
+				System.out.println("Apellido más lejano: " + ga.buscarPorMaxApellido());
+				System.out.println("Nombre más cercano: " + ga.buscarPorMinNombre());
 				System.out.println();
 				break;
 
@@ -135,77 +128,44 @@ public class Principal {
 
 				Alumno nuevo = new Alumno(nombre, apellido);
 
-				Collections.replaceAll(alumnos, alumnos.get(indice - 1), nuevo);
-				// Pongo -1 porque el usuario al meter un número no sabe que empieza por 0.
-				// y pone un alumno más del que quiera.
-				System.out.println();
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.reemplazarAlumno(nuevo, indice);
 				
+
 				break;
 
 			case 4:
-				// En este método en vez de cambiarle los signos al compare, o ponerle
-				// un - al principio del return, usamos este método para invertir el orden.
-
-				Collections.reverse(alumnos);
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.invertirLista();
 				break;
 
 			case 5:
 
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.imprimirLista();
 				System.out.println("Índice del alumno que quieres mover?");
 				indice = Leer.datoInt();
 
 				System.out.println("¿Índice del alumno por el que lo quieres cambiar?");
 				indiceNuevoAlumno = Leer.datoInt();
 
-				Collections.swap(alumnos, indice - 1, indiceNuevoAlumno - 1);
-
-				// Le agrego un -1 a los números porque al empezar a contar por 0,
-				// el usuario escogería sin quererlo la segunda opción al presionar 1.
-
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.cambiarPosicion(indice, indiceNuevoAlumno);
 				break;
 
 			case 6:
 
-				Collections.shuffle(alumnos);
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.desordenarLista();
 				break;
 
 			case 7:
 				Collections.sort(alumnos, new OrdenarPorNombre());
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.imprimirLista();
 				break;
 
 			case 8:
 				Collections.sort(alumnos);
-				for (int i = 0; i < alumnos.size(); i++) {
-					System.out.println((i + 1) + ". " + alumnos.toArray()[i]);
-				}
-				System.out.println();
+				ga.imprimirLista();
 				break;
 
 			default:
+				System.out.println();
 				System.out.println("Escoja una opción válida.");
 				System.out.println();
 				break;
